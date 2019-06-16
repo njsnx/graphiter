@@ -1,0 +1,13 @@
+{
+  "name": "njsn-graphiter",
+  "version": "0.1.0",
+  "author": "njsn",
+  "summary": "Send Data to Graphite from BPFTrace output",
+  "license": "Apache-2.0",
+  "source": "https://github.com/nmyster/graphiter",
+  "project_page": "https://github.com/nmyster/graphiter",
+  "issues_url": "https://github.com/nmyster/graphiter",
+  "dependencies": [],
+  "data_provider": null
+}
+
