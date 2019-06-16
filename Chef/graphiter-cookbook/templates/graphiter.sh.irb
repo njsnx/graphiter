@@ -2,8 +2,8 @@
 # Graphiter Service
 # description: Small service to start the graphiter montitoring service
 
-export GRAPHITE_PORT={{ graphiter.port | default('2003') }}
-export GRAPHITE_ENDPOINT={{ graphiter.endpoint | default('localhost') }}
+export GRAPHITE_PORT=<%= @graphiter_port %>
+export GRAPHITE_ENDPOINT=<%= @graphiter_endpoint %>
 RUNPIDFILE='/run/graphiter-runner.pid'
 BPPIDFILE='/run/graphiter-bpftrace.pid'
 
@@ -14,9 +14,9 @@ start() {
         exit 1
     else
         echo "Starting Service."
-        /usr/local/bin/bpftrace /root/cpu_latency.bt > {{ graphiter.setup_location }}/.staging.txt &
+        /usr/local/bin/bpftrace /root/cpu_latency.bt > <%= @graphiter_location %>/.staging.txt &
         echo $! > /var/run/graphiter-bpftrace.pid
-        $(which ruby) {{ graphiter.setup_location }}/graphiter.rb > {{ graphiter.setup_location }}/output.log &
+        $(which ruby) <%= @graphiter_location %>/graphiter.rb > <%= @graphiter_location %>/output.log &
         echo $! > /var/run/graphiter-runner.pid
         echo "Started"
     fi
@@ -27,7 +27,7 @@ stop() {
         kill -9 $(cat $BPPIDFILE)
         kill -9 $(cat $RUNPIDFILE)
         rm -rf $BPPIDFILE $RUNPIDFILE
-        echo "" > {{ graphiter.setup_location }}/.staging.txt
+        echo "" > <%= @graphiter_location %>/.staging.txt
         exit 0
     else
        echo "Service was not started"

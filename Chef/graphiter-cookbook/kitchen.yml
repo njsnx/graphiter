@@ -1,0 +1,15 @@
+---
+driver:
+  name: ssh
+  hostname: freeagent
+  
+provisioner:
+  name: chef_solo
+  chef_license: accept
+platforms:
+  - name: ubuntu
+suites:
+  - name: default
+    run_list:
+      - recipe[graphiter]
+    attributes:

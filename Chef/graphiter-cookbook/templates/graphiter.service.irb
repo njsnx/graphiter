@@ -5,8 +5,8 @@ Description=Graphiter Service
 User=root
 Type=simple
 TimeoutSec=0
-ExecStart={{ graphiter.setup_location }}/graphiter.sh start
-ExecStop={{ graphiter.setup_location }}/graphiter.sh stop
+ExecStart=<%= @graphiter_location %>/graphiter.sh start
+ExecStop=<%= @graphiter_location %>/graphiter.sh stop
 KillMode=process
 Restart=on-failure
 RestartSec=42s

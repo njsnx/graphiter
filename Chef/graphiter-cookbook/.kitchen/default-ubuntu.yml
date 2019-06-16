@@ -1,0 +1,8 @@
+---
+sudo: true
+port: 22
+ssh_key: 
+username: 
+hostname: freeagent
+last_action: converge
+last_error: 
