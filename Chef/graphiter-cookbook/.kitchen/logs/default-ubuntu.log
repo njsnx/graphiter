@@ -1,0 +1,30 @@
+I, [2019-06-16T17:58:04.711997 #76429]  INFO -- default-ubuntu: -----> Converging <default-ubuntu>...
+W, [2019-06-16T17:58:04.712205 #76429]  WARN -- default-ubuntu: Running legacy converge for 'Ssh' Driver
+I, [2019-06-16T17:58:04.712378 #76429]  INFO -- default-ubuntu: Preparing files for transfer
+I, [2019-06-16T17:58:04.712442 #76429]  INFO -- default-ubuntu: Preparing dna.json
+I, [2019-06-16T17:58:04.712703 #76429]  INFO -- default-ubuntu: Preparing current project directory as a cookbook
+I, [2019-06-16T17:58:04.715391 #76429]  INFO -- default-ubuntu: Removing non-cookbook files before transfer
+I, [2019-06-16T17:58:04.717294 #76429]  INFO -- default-ubuntu: Preparing solo.rb
+I, [2019-06-16T17:58:05.696127 #76429]  INFO -- default-ubuntu: -----> Chef installation detected (install only if missing)
+I, [2019-06-16T17:58:05.831490 #76429]  INFO -- default-ubuntu: Transferring files to <default-ubuntu>
+I, [2019-06-16T17:58:08.755690 #76429]  INFO -- default-ubuntu: Starting Chef Infra Client, version 15.0.300
+I, [2019-06-16T17:58:10.446877 #76429]  INFO -- default-ubuntu: resolving cookbooks for run list: ["graphiter"]
+I, [2019-06-16T17:58:10.458254 #76429]  INFO -- default-ubuntu: Synchronizing Cookbooks:
+I, [2019-06-16T17:58:10.462970 #76429]  INFO -- default-ubuntu:   - graphiter (0.0.0)
+I, [2019-06-16T17:58:10.463339 #76429]  INFO -- default-ubuntu: Installing Cookbook Gems:
+I, [2019-06-16T17:58:10.473346 #76429]  INFO -- default-ubuntu: Compiling Cookbooks...
+I, [2019-06-16T17:58:10.473496 #76429]  INFO -- default-ubuntu: Converging 5 resources
+I, [2019-06-16T17:58:10.473685 #76429]  INFO -- default-ubuntu: Recipe: graphiter::default
+I, [2019-06-16T17:58:10.473909 #76429]  INFO -- default-ubuntu:   * directory[/opt/graphiter] action create (up to date)
+I, [2019-06-16T17:58:10.474052 #76429]  INFO -- default-ubuntu:   * cookbook_file[/opt/graphiter/graphiter.rb] action create (up to date)
+I, [2019-06-16T17:58:10.474214 #76429]  INFO -- default-ubuntu:   * template[/opt/graphiter/graphiter.sh] action create (up to date)
+I, [2019-06-16T17:58:10.487451 #76429]  INFO -- default-ubuntu:   * template[/etc/systemd/system/graphiter.service] action create (up to date)
+I, [2019-06-16T17:58:10.607473 #76429]  INFO -- default-ubuntu:   * service[graphiter] action start
+I, [2019-06-16T17:58:10.607558 #76429]  INFO -- default-ubuntu:     - start service service[graphiter]
+I, [2019-06-16T17:58:10.694675 #76429]  INFO -- default-ubuntu:   * service[graphiter] action enable (up to date)
+I, [2019-06-16T17:58:10.744431 #76429]  INFO -- default-ubuntu: 
+I, [2019-06-16T17:58:10.744684 #76429]  INFO -- default-ubuntu: Running handlers:
+I, [2019-06-16T17:58:10.744910 #76429]  INFO -- default-ubuntu: Running handlers complete
+I, [2019-06-16T17:58:10.745089 #76429]  INFO -- default-ubuntu: Chef Infra Client finished, 1/6 resources updated in 01 seconds
+I, [2019-06-16T17:58:10.755734 #76429]  INFO -- default-ubuntu: Downloading files from <default-ubuntu>
+I, [2019-06-16T17:58:10.757833 #76429]  INFO -- default-ubuntu: Finished converging <default-ubuntu> (0m6.05s).
