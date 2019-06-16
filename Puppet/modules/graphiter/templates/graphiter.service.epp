@@ -1,0 +1,16 @@
+[Unit]
+Description=Graphiter Service
+
+[Service]
+User=root
+Type=simple
+TimeoutSec=0
+ExecStart=<%= $graphiter_location %>/graphiter.sh start
+ExecStop=<%= $graphiter_location %>/graphiter.sh stop
+KillMode=process
+
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=default.target
