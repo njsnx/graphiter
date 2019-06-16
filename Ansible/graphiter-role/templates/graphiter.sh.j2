@@ -1,0 +1,55 @@
+#!/bin/bash
+# Graphiter Service
+# description: Small service to start the graphiter montitoring service
+BPPIDFILE='/run/graphiter-bpftrace.pid'
+export GRAPHITE_PORT={{ graphiter.port | default('2003') }}
+export GRAPHITE_ENDPOINT={{ graphiter.endpoint | default('localhost') }}
+RUNPIDFILE='/run/graphiter-runner.pid'
+start() {
+    
+    if [ -f "$BPPIDFILE" ]; then
+        echo "PID File already exists. Can not start service"
+        exit 1
+    else
+        echo "Starting Service."
+        /usr/local/bin/bpftrace /root/cpu_latency.bt > {{ graphiter.setup_location }}/.staging.txt &
+        echo $! > /var/run/graphiter-bpftrace.pid
+        $(which ruby) {{ graphiter.setup_location }}/graphiter.rb > {{ graphiter.setup_location }}/output.log &
+        echo $! > /var/run/graphiter-runner.pid
+        echo "Started"
+    fi
+}
+
+stop() {
+    if [ -f "$RUNPIDFILE" ]; then
+        kill -9 $(cat $BPPIDFILE)
+        kill -9 $(cat $RUNPIDFILE)
+        rm -rf $BPPIDFILE $RUNPIDFILE
+        echo "" > {{ graphiter.setup_location }}/.staging.txt
+        exit 0
+    else
+       echo "Service was not started"
+    fi
+    
+}
+
+case "$1" in 
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       stop
+       start
+       ;;
+    status)
+       # code to check status of app comes here 
+       # example: status program_name
+       ;;
+    *)
+       echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0

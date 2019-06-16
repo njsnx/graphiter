@@ -1,0 +1,27 @@
+- name: Setup Graphiter Directory
+  file: 
+    path: "{{ graphiter.setup_location }}"
+    state: directory
+
+- name: Add Ruby Graphiter File
+  copy:
+    src: graphiter.rb
+    dest: "{{ graphiter.setup_location }}/graphiter.rb"
+    mode: a+x
+
+- name: Add Bash File
+  template:
+    src: graphiter.sh.j2
+    dest: "{{ graphiter.setup_location }}/graphiter.sh"
+    mode: a+x  
+
+- name: Create Service File
+  template:
+    src: graphiter.service.j2
+    dest: /etc/systemd/system/graphiter.service
+
+- name: Start & Enable the Service
+  service:
+    name: graphiter
+    enabled: true
+    state: started

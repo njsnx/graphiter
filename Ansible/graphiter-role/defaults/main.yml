@@ -1,0 +1,4 @@
+graphiter:
+  setup_location: /opt/graphiter
+  port: 2003
+  endpoint: localhost

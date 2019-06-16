@@ -1,0 +1,17 @@
+[Unit]
+Description=Graphiter Service
+
+[Service]
+User=root
+Type=simple
+TimeoutSec=0
+ExecStart={{ graphiter.setup_location }}/graphiter.sh start
+ExecStop={{ graphiter.setup_location }}/graphiter.sh stop
+KillMode=process
+
+Restart=on-failure
+RestartSec=42s
+
+StandardError={{ graphiter.setup_location }}/error.log #path to error log file
+[Install]
+WantedBy=default.target
