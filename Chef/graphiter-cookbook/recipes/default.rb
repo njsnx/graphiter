@@ -11,7 +11,7 @@ cookbook_file node['graphiter']['setup_location'] + '/graphiter.rb' do
 end
 
 template node['graphiter']['setup_location'] + '/graphiter.sh' do
-  source 'graphiter.sh.irb'
+  source 'graphiter.sh.erb'
   owner 'root'
   group 'root'
   variables(
@@ -24,7 +24,7 @@ template node['graphiter']['setup_location'] + '/graphiter.sh' do
 end
 
 template '/etc/systemd/system/' + node['graphiter']['service_name'] + '.service' do
-  source 'graphiter.service.irb'
+  source 'graphiter.service.erb'
   owner 'root'
   group 'root'
   variables(
