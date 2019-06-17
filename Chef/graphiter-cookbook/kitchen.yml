@@ -1,7 +1,7 @@
 ---
 driver:
   name: ssh
-  hostname: freeagent
+  hostname: my-amazing-server
   
 provisioner:
   name: chef_solo
