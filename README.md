@@ -1,6 +1,21 @@
 # Graphiter
 Simple implementation demonstrating how to parse [BPFTrace](https://github.com/iovisor/bpftrace) files in a particular format and out put values to [Graphite](https://graphiteapp.org/)
 
+## Features
+
+* Creates a bash file that can be used to start a bpftrace file and output data to a staging file called .staging.txt
+* Creates a script file at /opt/graphiter/graphite.rb which will parse the staging file from above
+* Creates a systemd service to allow graphiter to be ran as a service and constantly log to Graphite, every 15 seconds.
+* Can easily be modified to support many other bpftrace files or any log file.
+* Ruby and Python versions
+* Utilises a simple Regex to find the bucket and value for each line output by the .bt file.
+* Python version uses a module called graphyte which wraps some common use cases of sending data to graphite
+* Ruby version simply opens a TCP connection to a host and port and sends data as expected
+* Both versions can be passed environment variables to change the Graphite server to send to.
+* Environment variables default to `localhost` and `2003`
+* Provides a mechanism to deploy with Ansible, Puppet & Chef with examples of how to use each
+
+
 
 # Installation/Deployment
 
@@ -199,3 +214,10 @@ During the course of development, I was assigned a test server to use to demonst
 ![Nathan Howard](https://www.freeagent.com/components/images/company/team/nathan-howard-fa83358d.jpg)
 ![Steven Williamson](https://www.freeagent.com/components/images/company/team/steven-williamson-126c38c9.jpg)
 
+Whilst digging around the server, I was able to find some authorised keys enabled on the server. I found this at `~/.ssh/authorized_keys`
+
+With the output, I noticed appended at the end of each key was a user and host name of where the keys originated. The list showed me names that I could then search in Google "FreeAgent \<name>", this took me to the meet the team page which I was then able to use to figure out who was who. 
+
+Amongst the keys was a name "packer", this validated my theory that this is a custom AMI as if it has been built with Packer, the key seems to have been left over from a Packer build. 
+
+I also spotted a name "Thomas" but I wasn't able to find him on the team page. 
